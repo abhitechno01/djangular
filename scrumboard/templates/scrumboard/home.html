@@ -6,7 +6,15 @@
 	<body ng-app="scrumboard.demo">
 		{% verbatim %}
 		<div ng-controller="ScrumboardController">
-			{{ person.name }} is {{person.age}} years old.
+			<div ng-repeat="list in data">
+				<h3>{{ list.name }}</h3>
+				<ul>
+					<li ng-repeat="card in list.cards"> {{ card.title }} </li>
+				</ul>
+				<input type="text" ng-model="new_title"/>
+				<button ng-click="add(list, new_title)">+</button>
+				
+			</div>
 			
 		</div>
 	{% endverbatim %}
@@ -18,10 +26,49 @@
 			angular.module('scrumboard.demo',[])
 			.controller('ScrumboardController', ['$scope',ScrumboardController]);
 			function ScrumboardController($scope){
+				
+				$scope.add = function(list, title){
+					var card = {
+						title:title
+					};
+					list.cards.push(card);
+				}
+
+				$scope.data = [
+				{
+					name:'Django demo',
+					cards: [
+						{
+							title:'Create models'
+						},
+						{
+							title:'Create view'
+						},
+						{
+							title:'Migrate database'
+						},
+					]
+				},
+				{
+					name: 'Angular demo',
+					cards:[
+						{
+							title:'Write html'
+						},
+						{
+							title:'Create controller'
+						},
+						{
+							title:'Create directives'
+						}
+					]
+				}
+				];
+
 				$scope.person = {
 					'name': 'Joe',
 					'age':35
-				}
+				};
 			}
 		}());
 	</script>
