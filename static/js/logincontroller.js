@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	angular.module('scumboard.demo')
+	angular.module('scrumboard.demo')
 		.controller('LoginController', ['$scope', '$http', '$location', LoginController]);
 
 	function LoginController($scope, $http, $location) {
