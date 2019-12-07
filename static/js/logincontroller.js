@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular.module('scrumboard.demo')
-		.controller('LoginController', ['$scope', '$http', '$location','Login', LoginController]);
+		.controller('LoginController', ['$scope', '$http', '$location', 'Login', LoginController]);
 
 	function LoginController($scope, $http, $location, Login) {
 		$scope.login = function() {
@@ -15,7 +15,7 @@
 					});
 		}
 
-		if(Login.isLoggedIn()){
+		if (Login.isLoggedIn()) {
 			$locatio.url('/');
 		}
 	}
